@@ -2,8 +2,9 @@ public class Operations {
     private  int id ;
     private String name,status,deadline;
     private static int uniqueid = 0;
+   // private enum status {Pending,In_Progress,Completed}
 
-    enum status {Pending,inprogress,completed ;}
+
 
     public static int getUniqueId() {
         uniqueid++;

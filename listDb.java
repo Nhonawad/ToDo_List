@@ -48,20 +48,34 @@ public class listDb {
     }
 
     public boolean sortitems(String fieldname){
-        /*switch (fieldname.toUpperCase()) {
+        switch (fieldname.toUpperCase()) {
             case "NAME":
-                userdatadb.name.sort();
-                break;
+                    userdatadb.sort(new Comparator<Operations>() {
+                        @Override
+                        public int compare(Operations o1, Operations o2) {
+                            return o1.getName().compareTo(o2.getName());
+                        }
+                    });
+                    break;
             case "DEADLINE":
-
+                    userdatadb.sort(new Comparator<Operations>() {
+                        @Override
+                        public int compare(Operations o1, Operations o2) {
+                            return o1.getDeadline().compareTo(o2.getDeadline());
+                        }
+                    });
                 break;
             case "STATUS":
-
+                userdatadb.sort(new Comparator<Operations>() {
+                    @Override
+                    public int compare(Operations o1, Operations o2) {
+                        return o1.getStatus().compareTo(o2.getStatus());
+                    }
+                });
                 break;
 
-        }*/
-        for(Operations ud: userdatadb) {
-            ud.getName().sort();
         }
+
+        return true;
     }
 }

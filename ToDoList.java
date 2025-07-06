@@ -18,17 +18,18 @@ public class ToDoList {
     }
 
     public void printMyMenu(){
+        int useroption = 0;
         System.out.println("Welcome to Nayana's To Do List");
         while(true) {
             System.out.println("Please select an option from the below" + "\n" +
-                    "1.Add " + "\n" +
-                    "2.Update " + "\n" +
-                    "3.Delete" + "\n" +
-                    "4.List" + "\n" +
-                    "5.Sort" + "\n" +
-                    "6.Exit");
+                    "1.Add    " + "2.Update  " + "3.Delete  " + "4.List   " + "5.Sort   " + "6.Exit");
 
-            int useroption = Integer.valueOf(getUserInput("Please enter option number")); // converting string value to int for switch
+            try {
+                useroption = Integer.valueOf((getUserInput("Please enter option number")).trim()); // converting string value to int for switch
+            }
+            catch(NumberFormatException e){
+                useroption = 0;
+            }
 
             switch (useroption) {
                 case 1:
@@ -58,21 +59,23 @@ public class ToDoList {
 
     public boolean addTask(){
         String taskname = getUserInput("Enter task name");
-        String deadline = getUserInput("Enter deadline in dd-mm-yy format");
+        String deadline = (getUserInput("Enter deadline in dd-mm-yyyy format")).trim();
         if (validatedateformat(deadline) == false){
-            System.out.println("Please enter date in dd-mm-yy format");
+            System.out.println("Please enter date in dd-mm-yyyy format");
             return true;
         }
         else {
             Operations Operation = new Operations(Operations.getUniqueId(), taskname, deadline, "Pending");
+            System.out.println("Your task has been added successfully!!");
             return lop.addtolist(Operation);
         }
 
     }
     public boolean validatedateformat(String deadline){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         try{
-            LocalDate.parse(deadline, formatter);
+            LocalDate.parse(deadline, format);
+            //if the format of the deadline string matches the formatter, it returns a LocalDate object.
             return true;
         }
         catch(Exception e){
@@ -83,7 +86,7 @@ public class ToDoList {
 
 
     public void deleteTask(){
-        int deletetaskid =  Integer.valueOf(getUserInput("Enter the task ID which you want to delete"));
+        int deletetaskid =  Integer.valueOf((getUserInput("Enter the task ID which you want to delete").trim()));
         lop.DeleteListItem(deletetaskid);
 
     }
@@ -106,10 +109,9 @@ public class ToDoList {
 
     }
     public void updateTask(){
-        int modifytaskid =  Integer.valueOf(getUserInput("Enter the task ID which you want to update"));
-        String modfield = getUserInput("Enter the field which you want to update");
-        String modvalue = getUserInput("Enter new value");
-
+        int modifytaskid =  Integer.valueOf((getUserInput("Enter the task ID which you want to update")).trim());
+        String modfield = (getUserInput("Enter the field which you want to update")).trim();
+        String modvalue = (getUserInput("Enter new value")).trim();
         lop.updateItem(modifytaskid,modfield,modvalue);
 
     }

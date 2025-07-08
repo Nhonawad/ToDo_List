@@ -1,1 +1,9 @@
-# The ToDo_list java code allows you to add list of all the task and also to perform some basic operation on that added data. *.The code allows you to ADD,DELETE,MODIFY,SORT,LIST data. *.It takes the following input from user while adding the tasks -Task name -Deadline date
+
+# ToDo_List
+*.The ToDo_list java code allows you to add list of all the task and also to perform some basic operation on that added data.
+*.The code allows you to ADD,DELETE,MODIFY,SORT,LIST data.
+*.It takes the following input from user while adding the tasks 
+    -Task name 
+    -Deadline date 
+
+

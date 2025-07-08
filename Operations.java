@@ -2,9 +2,14 @@ public class Operations {
     private  int id ;
     private String name,status,deadline;
     private static int uniqueid = 0;
-   // private enum status {Pending,In_Progress,Completed}
+    private enum status {Pending,In_Progress,Completed}
 
-
+    public Operations(int id,String inputname , String inputdate, String inputstatus) {
+        this.id       = id;
+        this.name     = inputname;
+        this.deadline = inputdate;
+        this.status   = inputstatus;
+    }
 
     public static int getUniqueId() {
         uniqueid++;
@@ -12,13 +17,12 @@ public class Operations {
     }
 
     public String getStatus() {
-        return status;
+        return String.valueOf(status);
     }
 
-    public  int getId() {
+    public int getId() {
         return this.id;
     }
-
 
     public String getName() {
         return name;
@@ -44,12 +48,7 @@ public class Operations {
         this.name = name;
     }
 
-    public Operations(int id,String inputname , String inputdate, String inputstatus) {
-        this.id = id;
-        this.name = inputname;
-        this.deadline = inputdate;
-        this.status = inputstatus;
-    }
+
 
 
 

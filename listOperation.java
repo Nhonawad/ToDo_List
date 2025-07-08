@@ -3,7 +3,6 @@ import java.util.List;
 
 public class listOperation {
 
-
     private listDb userdata;
 
     public listOperation(){
@@ -21,10 +20,12 @@ public class listOperation {
     public boolean DeleteListItem(int id){
         return userdata.deletedata(id);
     }
+
     public boolean updateItem(int itemid,String updatefield,String updatevalue){
         userdata.updatedata(itemid,updatefield,updatevalue);
         return true;
     }
+
     public boolean sortitems(String fieldname){
         userdata.sortitems(fieldname);
         return true;

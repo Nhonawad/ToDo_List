@@ -14,7 +14,6 @@ public class ToDoList {
         System.out.println(usermessage);
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
-
     }
 
     public void printMyMenu(){
@@ -52,10 +51,9 @@ public class ToDoList {
         }
         else {
             Operations Operation = new Operations(Operations.getUniqueId(), taskname, deadline, "Pending");
-            System.out.println("Your task has been added successfully!!");
+            System.out.println("Your task has been added successfully!!"+ "\n");
             return lop.addtolist(Operation);
         }
-
     }
 
     public boolean validatedateformat(String deadline){
@@ -73,7 +71,6 @@ public class ToDoList {
     public void deleteTask(){
         int deletetaskid =  Integer.valueOf((getUserInput("Enter the task ID which you want to delete").trim()));
         lop.DeleteListItem(deletetaskid);
-
     }
 
     public void listTask(){
@@ -98,7 +95,6 @@ public class ToDoList {
         String modfield = (getUserInput("Enter the field which you want to update")).trim();
         String modvalue = (getUserInput("Enter new value")).trim();
         lop.updateItem(modifytaskid,modfield,modvalue);
-
     }
 
     public void sorttask(){

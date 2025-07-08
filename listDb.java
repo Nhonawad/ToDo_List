@@ -6,7 +6,6 @@ public class listDb {
 
     static List<Operations> userdatadb = new ArrayList<>();
 
-
     public boolean adddata(Operations op){
         return userdatadb.add(op);
     }
@@ -31,19 +30,11 @@ public class listDb {
         for(Operations ud: userdatadb){
             if (ud.getId() == itemid){
                 switch (updatefield.toUpperCase()){
-                    case "NAME":
-                        ud.setName(updatevalue);
-                        break;
-                    case "DEADLINE":
-                        ud.setDeadline(updatevalue);
-                        break;
-                    case "STATUS":
-                        ud.setStatus(updatevalue);
-                        break;
+                    case "NAME" -> ud.setName(updatevalue);
+                    case "DEADLINE" -> ud.setDeadline(updatevalue);
+                    case "STATUS" -> ud.setStatus(updatevalue);
                 }
-
             }
-
         }
     }
 

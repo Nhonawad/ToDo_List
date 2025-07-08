@@ -14,7 +14,6 @@ public class ToDoList {
         System.out.println(usermessage);
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
-
     }
 
     public void printMyMenu(){
@@ -32,30 +31,16 @@ public class ToDoList {
             }
 
             switch (useroption) {
-                case 1:
-                    addTask();
-                    break;
-                case 2:
-                    updateTask();
-                    break;
-                case 3:
-                    deleteTask();
-                    break;
-                case 4:
-                    listTask();
-                    break;
-                case 5:
-                    sorttask();
-                    break;
-                case 6:
-                    System.exit(0);
-                default:
-                    System.out.println("You have selected an invalid input.Please select a valid one to continue");
+                case 1 -> addTask();
+                case 2 -> updateTask();
+                case 3 -> deleteTask();
+                case 4 -> listTask();
+                case 5 -> sorttask();
+                case 6 -> System.exit(0);
+                default -> System.out.println("You have selected an invalid input.Please select a valid one to continue");
             }
         }
-
     }
-
 
     public boolean addTask(){
         String taskname = getUserInput("Enter task name");
@@ -66,11 +51,11 @@ public class ToDoList {
         }
         else {
             Operations Operation = new Operations(Operations.getUniqueId(), taskname, deadline, "Pending");
-            System.out.println("Your task has been added successfully!!");
+            System.out.println("Your task has been added successfully!!"+ "\n");
             return lop.addtolist(Operation);
         }
-
     }
+
     public boolean validatedateformat(String deadline){
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         try{
@@ -83,17 +68,14 @@ public class ToDoList {
         }
     }
 
-
-
     public void deleteTask(){
         int deletetaskid =  Integer.valueOf((getUserInput("Enter the task ID which you want to delete").trim()));
         lop.DeleteListItem(deletetaskid);
-
     }
+
     public void listTask(){
         List<Operations> completedata = lop.showlist();
         if(!(completedata.isEmpty())) {
-
             System.out.println("               Nayana's TODO List:                   ");
             System.out.println("-----------------------------------------------------");
             System.out.println("Task No      Name               Deadline       Status");
@@ -106,14 +88,13 @@ public class ToDoList {
         else{
             System.out.println("There are no items to display in the list");
         }
-
     }
+
     public void updateTask(){
         int modifytaskid =  Integer.valueOf((getUserInput("Enter the task ID which you want to update")).trim());
         String modfield = (getUserInput("Enter the field which you want to update")).trim();
         String modvalue = (getUserInput("Enter new value")).trim();
         lop.updateItem(modifytaskid,modfield,modvalue);
-
     }
 
     public void sorttask(){

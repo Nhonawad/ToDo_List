@@ -76,14 +76,15 @@ public class ToDoList {
     public void listTask(){
         List<Operations> completedata = lop.showlist();
         if(!(completedata.isEmpty())) {
-            System.out.println("               Nayana's TODO List:                   ");
-            System.out.println("-----------------------------------------------------");
-            System.out.println("Task No      Name               Deadline       Status");
-            System.out.println("-----------------------------------------------------");
+            System.out.println("       Nayana's TODO List:        ");
+            System.out.println("--------------------------------------");
+            System.out.println("Task No" + " | " + "Name" + " | " + "Deadline" + " | " + "Status");
+            System.out.println("---------------------------------------");
 
             for (Operations op : completedata) {
-                System.out.println(op.getId() + "        " + op.getName() + "      " + op.getDeadline() + "      " + op.getStatus());
+                System.out.println(op.getId() + " | " + op.getName() + " | " + op.getDeadline() + " | " + op.getStatus());
             }
+            System.out.println("\n");
         }
         else{
             System.out.println("There are no items to display in the list");
@@ -92,8 +93,14 @@ public class ToDoList {
 
     public void updateTask(){
         int modifytaskid =  Integer.valueOf((getUserInput("Enter the task ID which you want to update")).trim());
-        String modfield = (getUserInput("Enter the field which you want to update")).trim();
-        String modvalue = (getUserInput("Enter new value")).trim();
+        String modfield  = (getUserInput("Enter the field which you want to update")).trim();
+        String modvalue  = (getUserInput("Enter new value")).trim();
+        if (modfield.toUpperCase().equals("DEADLINE")){
+            if(!validatedateformat(modvalue)){
+                System.out.println("Invalid date format !! Please enter date in dd-mm-yyyy format" + "\n");
+                return;
+            }
+        }
         lop.updateItem(modifytaskid,modfield,modvalue);
     }
 

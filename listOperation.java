@@ -1,7 +1,7 @@
 
 import java.util.List;
 
-public class listOperation {
+public class listOperation implements iListOperation {
 
     private listDb userdata;
 
@@ -30,6 +30,4 @@ public class listOperation {
         userdata.sortitems(fieldname);
         return true;
     }
-
-
 }

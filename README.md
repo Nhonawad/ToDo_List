@@ -19,7 +19,7 @@ A console-based Java To‑Do application enabling users to manage their daily ta
 
 - **Update Task:** Modify the description or toggle the completion status of a task by ID.
 
-- **Sort Tasks:** Reorder tasks based on chosen criteria—ID, status (complete/pending), or alphabetical description—on demand.
+- **Sort Tasks:** Reorder tasks based on chosen criteria—ID, status (complete/pending), or alphabetical taskname/description—on demand.
 
 ## Usage
 
